@@ -3,7 +3,6 @@
 ### [📄**Paper**](https://aclanthology.org/2020.cl-1.2.pdf)  
 Zhou, L., Gao, J., Li, D., and Shum, H. Y., “The design and implementation of xiaoice, an empathetic social chatbot,” _Computational Linguistics Journal (CL)_, vol. 46, no. 1, pp. 53-93, 2020.
 
-
 ### **📌 목차** 
 
 1. Introduction
@@ -55,22 +54,21 @@ XiaoIce의 전체 프레임워크를 소개하는 논문이다.
 - 입력에 대한 답변을 생성함으로써 기본적인 대화 능력 제공
 - 오픈 도메인 대화를 커버하는 General Chat과 특정 도메인의 대화만 커버하는 Domain Chat 모드로 구성  
     🎈 General Chat과 Domain Chat은 같은 구조를 가지며 DB를 분리함으로써 구분
-- 후보군을 생성하는 3개의 Candidate Generator와 후보군의 순위를 결정하는 Boosted Tree Ranker(Wu et al. 2010)로 이루어짐
+- 후보군을 생성하는 3개의 Candidate Generator와 후보군의 순위를 결정하는 Boosted Tree Ranker(Wu et al. 2010)로 이루어짐
 
 ⑴ Retrieval-Based Generator using Paired Data
 
 **데이터**  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인터넷(social networks, public forum, bulletin board, news comment 등)에서 대화 데이터 수집  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XiaIce를 런칭한 후 30억개의 대화 데이터 수집데이터 정제   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인터넷으로 수집한 데이터에 대해서 Empathetic computing module을 통해 $(Q_c, R, e_Q, e_R)$로 변환 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XiaIce를 런칭한 후 30억개의 대화 데이터 수집
 
+**데이터 정제**     
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인터넷으로 수집한 데이터에 대해서 Empathetic computing module을 통해 <img src="https://render.githubusercontent.com/render/math?math=(Q_c, R, e_Q, e_R)">로 변환   
 
-> $Q_c$: 주어진 질의  
-> $R$: 답변  
-> $e_Q ・ e_R$: 각각 질의자와 답변자의 감정, 의도, 발화 주제 등을 포함한 정보
+<img src="https://render.githubusercontent.com/render/math?math=Q_c">: 주어진 질의    
+<img src="https://render.githubusercontent.com/render/math?math=R">: 답변   
+<img src="https://render.githubusercontent.com/render/math?math=e_Q, e_R">: 각각 질의자와 답변자의 감정, 의도, 발화 주제 등을 포함한 정보   
 
-
-**데이터 정제**  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XiaoIce의 페르소나에 적합한 공감적 답변만 남도록 정제  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;개인정보, 이해하기 어려운 프로그래밍 코드, 적합하지 않은 내용, 오타 등 제거
 
@@ -79,7 +77,7 @@ XiaoIce의 전체 프레임워크를 소개하는 논문이다.
 400개의 응답 후보군 선택
 
 **단점**  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인터넷 포럼에서 잘 다뤄지지 않은 주제는 DB에 포함되지 않기 때문에 질의에 대한 coverage가 낮음 😂
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인터넷 포럼에서 잘 다뤄지지 않은 주제는 DB에 포함되지 않기 때문에 질의에 대한 coverage가 낮음 😂  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; → coverage를 높이기 위해 2개의 candidate generator 도입
 
 
@@ -93,12 +91,13 @@ Retrieval-Based Generator의 단점을 보완하기 위해 도입
 ![Neural Response Generator](../img/xiaoice_neural_response_gen.png)
 
 
+
 ⑶ Retrieval-Based Generator using Unpaired Data  
 Coverage를 향상시키기 위해 Non-Conversational 데이터를 사용하여 학습한 Candidate Generator  
 
-1. 유저의 질의로부터 발화 주제 탐색  
-2. 지식 그래프에서 유저의 발화 주제와 관련된 후보 주제 20개 선택  
-3. 유저의 발화 주제와 후보 주제를 결합하여 대화 DB에서 응답 후보군 선택  
+1. 유저의 질의로부터 발화 주제 탐색  
+2. 지식 그래프에서 유저의 발화 주제와 관련된 후보 주제 20개 선택  
+3. 유저의 발화 주제와 후보 주제를 결합하여 대화 DB에서 응답 후보군 선택  
 
 ![Retrieval-Based Generator](../img/xiaoice_retrieval_based_generator.png)
 
