@@ -1,4 +1,4 @@
-## **Microsoft의 XiaoIce 논문 리뷰**
+## **Microsoft의 XiaoIce 논문 리뷰** (11월 26일~🏃‍♀️)
 
 ### [📄**Paper**](https://aclanthology.org/2020.cl-1.2.pdf)  
 Zhou, L., Gao, J., Li, D., and Shum, H. Y., “The design and implementation of xiaoice, an empathetic social chatbot,” _Computational Linguistics Journal (CL)_, vol. 46, no. 1, pp. 53-93, 2020.
