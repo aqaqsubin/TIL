@@ -255,6 +255,7 @@ interactive representation<br>
 <img src="../img/xiaoice_s2s_bot_generation_with_attn.jpg" width=850/><br>
 hidden state 계산 과정
 </div>
+
 <img src="https://render.githubusercontent.com/render/math?math=f(h^Q_t, e_{r_t}, v)">에 softmax를 적용함으로써 Next Token에 대한 확률을 계산한다.
 
 <br><br>
