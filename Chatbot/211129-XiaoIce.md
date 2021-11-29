@@ -264,7 +264,7 @@ previous hidden state <img src="https://render.githubusercontent.com/render/math
 
 <div align=center>
 <img src="../img/xiaoice_result_of_interactive_representation.PNG" width=800/><br>
-왼쪽은 기본 S2S-Bot, 오른쪽은 interactive representation을 결합한 결화
+왼쪽은 기본 S2S-Bot, 오른쪽은 interactive representation을 결합한 결과
 </div>
 
 
