@@ -67,8 +67,13 @@ XiaoIce는 높은 IQ를 달성하기 위해 230개의 _Dialog Skills_, 멀티턴
 
 ### **2.3 Social Chat as Hierarchical Decision-Making**
 
-본 논문에서는 사람과 머신 간의 소셜 대화을 Hierarchical Decision-Making Process로 캐스팅하였다. 
-![Hierarchical Decision Making](../img/hierarchical_decision_making.png)
+본 논문에서는 사람과 머신 간의 소셜 대화을 Hierarchical Decision-Making Process로 캐스팅하였다.
+<div align=center>
+Hierarchical Decision Making<br>
+<img src="../img/hierarchical_decision_making.png" width=800/>
+</div>
+<br>
+
 
 - Top-level process: 전체 대화 관리 및 conversation mode에 따라 skill 선택  
 - Low-level process: 특정 task 수행 또는 conversation segment 생성을 위한 응답 선택 
@@ -116,9 +121,8 @@ XiaoIce는 높은 IQ를 달성하기 위해 230개의 _Dialog Skills_, 멀티턴
 working memory에 <img src="https://render.githubusercontent.com/render/math?math=s">로 인코딩하여 저장    
 각 턴에 대한 유저 질의, XiaoIce 응답, Empathetic computing module에 의해 생성된 Empathy label을 텍스트로 저장
 
-**Dialogue Policy**   
+**Dialogue Policy** (~Hierarchical Policy)  
 
-Hierarchical Policy
 - High-level policy: Core Chat 또는 skill들 중 선택  
     skill trigger 집합에 의해 구현됨  
     (Topic Manager, Domain Chat triggers 등의 _머신러닝 기반 트리거_ 및 키워드 등에 의해 유도되는 _규칙 기반 트리거_)
@@ -140,30 +144,77 @@ _Boosted Tree 기반 Topic switching classifier_
 2) 사용자가 비슷한 말을 반복하는지 또는 별다른 정보가 없는지  
 3) 사용자의 발화가 애매한지 (OK, I see 등)
 
+_Boosted Tree Ranker 기반 Topic reconmmendation engine_   
+Topic ranker와 Topic database로 이루어져 있으며, Topic switch가 활성화되면 <img src="https://render.githubusercontent.com/render/math?math=s">를 통해 Topic database로부터 Topic candidates를 찾는다   
+
+다음의 feature를 기반으로 후보군 예측  
+1) Contextual Relevance: 대화와 연관되었는지
+2) Freshness: 새로운 주제인가, 현재 이 타이밍에 유효한가 (이미 했던 지난 얘기 No)
+3) Personal Interests: User profile에 따른 사용자가 관심있어 하는 주제인가
+4) Popularity: 인기있는 주제인가
+5) Acceptance rate: XiaoIce에서 해당 주제의 accept 비율이 높은가
+
+--> Topic Manager를 Dialog Manager에 통합함으로써 expected CPS가 0.5 증가
+
 <br>
 
 ### **4.2 Empathetic Computing Module**
 - XiaoIce의 EQ를 담당
 - 감정, 의도, 주제에 대한 의견, 배경지식, 일반적인 관심사 등 유저 및 대화의 공감적 측면을 파악
 
+**Contextual Query Understanding (CQU)**  
+주어진 query, <img src="https://render.githubusercontent.com/render/math?math=Q">를 현재 context(<img src="https://render.githubusercontent.com/render/math?math=C">)를 고려하여 <img src="https://render.githubusercontent.com/render/math?math=Q_c">로 rewrite    
+
+<div align=center>
+<img src="../img/xiaoice_cqu_rewrite.png" width=850><br>
+문맥에 맞도록 대명사 him이 Ashin으로 수정되었다 (in Turn 12)
+
+</div>
+<br>
+
+1) Named Entity Identification: NE를 레이블링하고, working memory에 있는 경우 링크, 없으면 저장 
+2) Co-reference Resolution: 모든 대명사를 NE로 변경
+3) Sentence Completion: 문장이 완결되지 않은 경우, <img src="https://render.githubusercontent.com/render/math?math=C">를 통해 문장 완결
+
+**User Understanding**  
+사용자의 흥미, 감정, 의도, 의견, 사용자 페르소나 및 <img src="https://render.githubusercontent.com/render/math?math=C">를 <img src="https://render.githubusercontent.com/render/math?math=e_Q">로 인코딩하는 컴포넌트이다.  
+
+<div align=center>
+<img src="../img/xiaoice-e_Q_e_R.PNG" width=850><br>
+사용자의 profile을 반영한 발화 정보 (in Turn 11)
+</div>
+
+- Topic label: Topic Manager에 의해 감지된 topic
+- Intent label: 화행 분석을 통해 탐지된 의도 (총 11개로 화행분류)
+- Sentiment: happy, sad, angry, neural, 사용자 감정 변화(e.g. from happy->sad)로 분류
+- Opinion: topic에 대한 반응 (positive, neural, negative)
+- User profile: 사용자 ID가 유효한 경우, 사용자 페르소나 정보 포함
+
+**Interpersonal Response Generation**  
+<img src="https://render.githubusercontent.com/render/math?math=e_Q">를 기반으로 Response Empathy vector <img src="https://render.githubusercontent.com/render/math?math=e_R">를 생성하는 컴포넌트이다.  
+이는 생성될 응답의 공감적 측면을 지정하며, XiaoIce의 페르소나를 구체화하는 역할을 한다.
+
+--> Empathetic Computing module은 CPS에는 별다른 차이가 없었지만, NAU를 상승시켰다. (0.5 to 5.1 million in 3 month)
+
 ### **4.3 Core Chat**  
 - 입력에 대한 답변을 생성함으로써 기본적인 대화 능력 제공
 - 오픈 도메인 대화를 커버하는 General Chat과 특정 도메인의 대화만 커버하는 Domain Chat 모드로 구성  
     🎈 General Chat과 Domain Chat은 같은 구조를 가지며 DB를 분리함으로써 구분
 - 후보군을 생성하는 3개의 Candidate Generator와 후보군의 순위를 결정하는 Boosted Tree Ranker(Wu et al. 2010)로 이루어짐
+    > Generated response가 interpersonal & fit XiaoIce's persona
 
 ⑴ Retrieval-Based Generator using Paired Data
 
 **데이터**  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인터넷(social networks, public forum, bulletin board, news comment 등)에서 대화 데이터 수집  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XiaIce를 런칭한 후 30억개의 대화 데이터 수집
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인터넷(social networks, public forum, bulletin board, news comment 등)에서 사람 간 대화 데이터 수집  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XiaIce를 런칭한 후 30억개의 사람과 머신 간 대화 데이터 수집
 
 **데이터 정제**     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인터넷으로 수집한 데이터에 대해서 Empathetic computing module을 통해 <img src="https://render.githubusercontent.com/render/math?math=(Q_c, R, e_Q, e_R)">로 변환   
 
-<img src="https://render.githubusercontent.com/render/math?math=Q_c">: 주어진 질의    
+<img src="https://render.githubusercontent.com/render/math?math=Q_c">: 주어진 질의 (+current context)    
 <img src="https://render.githubusercontent.com/render/math?math=R">: 답변   
-<img src="https://render.githubusercontent.com/render/math?math=e_Q, e_R">: 각각 질의자와 답변자의 감정, 의도, 발화 주제 등을 포함한 정보   
+<img src="https://render.githubusercontent.com/render/math?math=e_Q, e_R">: 각각 질의자와 답변자의 감정, 의도, 발화 주제 등을 포함한 벡터   
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XiaoIce의 페르소나에 적합한 공감적 답변만 남도록 정제  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;개인정보, 이해하기 어려운 프로그래밍 코드, 적합하지 않은 내용, 오타 등 제거
@@ -179,23 +230,56 @@ _Boosted Tree 기반 Topic switching classifier_
 
 ⑵ Neural Response Generator  
 Retrieval-Based Generator의 단점을 보완하기 위해 도입   
-오픈 도메인 대화를 위한 GRU-RNN 기반 Seq2Seq 모델
+오픈 도메인 대화를 위한 GRU-RNN 기반 Seq2Seq 모델  
+견고하고(?) coverage가 높은 답변을 제공함   
 
 >질의: You like Ashin  
 >응답 후보: Why not?  
 
-![Neural Response Generator](../img/xiaoice_neural_response_gen.png)
+
+<div align=center>
+Neural Response Generator<br>
+<img src="../img/xiaoice_neural_response_gen.png" width=850/>
+</div>
+<br>
+
+<div align=center>
+interactive representation<br>
+<img src="../img/xiaoice_interactive_representation.png" width=300/>
+</div>
+<br>
+
+<img src="https://render.githubusercontent.com/render/math?math=v">를 context vector로 한 Attention mechanism을 적용하였다.
+
+<div align=center>
+<img src="../img/xiaoice_s2s_bot_generation_with_attn.jpg" width=850/><br>
+hidden state 계산 과정
+</div>
+<img src="https://render.githubusercontent.com/render/math?math=f(h^Q_t, e_{r_t}, v)">에 softmax를 적용함으로써 Next Token에 대한 확률을 계산한다.
+
+<br><br>
+
+previous hidden state <img src="https://render.githubusercontent.com/render/math?math=h_{t-1}">와 단어 임베딩 <img src="https://render.githubusercontent.com/render/math?math=e_t">와 함께 interactive representation <img src="https://render.githubusercontent.com/render/math?math=v">을 결합함으로써 XiaoIce의 페르소나에 맞는 답변이 출력됨  
+
+<div align=center>
+<img src="../img/xiaoice_result_of_interactive_representation.png" width=800/><br>
+왼쪽은 기본 S2S-Bot, 오른쪽은 interactive representation을 결합한 결화
+</div>
 
 
+<br>
 
 ⑶ Retrieval-Based Generator using Unpaired Data  
 Coverage를 향상시키기 위해 Non-Conversational 데이터를 사용하여 학습한 Candidate Generator  
 
-1. 유저의 질의로부터 발화 주제 탐색  
-2. 지식 그래프에서 유저의 발화 주제와 관련된 후보 주제 20개 선택  
-3. 유저의 발화 주제와 후보 주제를 결합하여 대화 DB에서 응답 후보군 선택  
+1. 사용자의 질의로부터 발화 주제 탐색  
+2. 지식 그래프에서 사용자의 발화 주제와 관련된 후보 주제 20개 선택  
+3. 사용자의 발화 주제와 후보 주제를 결합하여 대화 DB에서 응답 후보군 선택  
 
-![Retrieval-Based Generator](../img/xiaoice_retrieval_based_generator.png)
+<div align=center>
+Retrieval-Based Generator<br>
+<img src="../img/xiaoice_retrieval_based_generator.png" width=900/>
+</div>
 
 ### **4.4 Image Commenting**  
 
