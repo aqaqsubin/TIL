@@ -132,6 +132,13 @@ Hierarchical Policy
 
 
 **Topic Manager**  
+대화 주제를 바꿀 것인지 아닌지 판단하는 Topic switching classifier와 새로운 대화 주제를 추천하는 topic recommendation engine으로 구성되어 있다.  
+
+_Boosted Tree 기반 Topic switching classifier_  
+다음의 feature를 기반으로 예측  
+1) Core Chat이 유효하지 않은 답변을 출력했는지
+2) 사용자가 비슷한 말을 반복하는지 또는 별다른 정보가 없는지  
+3) 사용자의 발화가 애매한지 (OK, I see 등)
 
 <br>
 
