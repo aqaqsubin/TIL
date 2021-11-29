@@ -273,14 +273,25 @@ previous hidden state <img src="https://render.githubusercontent.com/render/math
 ⑶ Retrieval-Based Generator using Unpaired Data  
 Coverage를 향상시키기 위해 Non-Conversational 데이터를 사용하여 학습한 Candidate Generator  
 
+뉴스의 인용 문구 및 공개 강의로부터 문장을 수집하였으며, 이를 <img src="https://render.githubusercontent.com/render/math?math=R">로 간주한다.   
+작성자가 누군지 알기 때문에, 작성자 정보를 포함한 <img src="https://render.githubusercontent.com/render/math?math=(R, e_{R})">로 인코딩한다.
+
+
+*Query expansion*: <img src="https://render.githubusercontent.com/render/math?math=Q_c">에 다른 토픽을 추가    
+본 Retrieval-based Generator의 지식 그래프(Knowledge Graph, KG)는 paired data(conversational data)와 Microsoft의 지식 그래프인 Satori를 결합함으로써 구축하였으며,   
+head-relation-tail triple <img src="https://render.githubusercontent.com/render/math?math=(h, r, t)">로 구성됨 
+
+
 1. 사용자의 질의로부터 발화 주제 탐색  
 2. 지식 그래프에서 사용자의 발화 주제와 관련된 후보 주제 20개 선택  
-3. 사용자의 발화 주제와 후보 주제를 결합하여 대화 DB에서 응답 후보군 선택  
+3. 사용자의 발화 주제와 후보 주제를 결합하여 paired DB에서 응답 후보군 선택  
 
 <div align=center>
 Retrieval-Based Generator<br>
 <img src="../img/xiaoice_retrieval_based_generator.png" width=900/>
 </div>
+
+Neural Response Generator보다 길고 유용한 정보가 포함될 수 있으며, Retrieval-Based Generator using Paired Data보다 다양한 topic이 포함된 응답이 출력될 수 었어, 세 모델이 상호보완적으로 사용된다.
 
 ### **4.4 Image Commenting**  
 
