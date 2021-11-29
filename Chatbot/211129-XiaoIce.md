@@ -166,7 +166,7 @@ Topic ranker와 Topic database로 이루어져 있으며, Topic switch가 활성
 주어진 query, <img src="https://render.githubusercontent.com/render/math?math=Q">를 현재 context(<img src="https://render.githubusercontent.com/render/math?math=C">)를 고려하여 <img src="https://render.githubusercontent.com/render/math?math=Q_c">로 rewrite    
 
 <div align=center>
-<img src="../img/xiaoice_cqu_rewrite.png" width=850><br>
+<img src="../img/xiaoice_cqu_rewrite.PNG" width=850><br>
 문맥에 맞도록 대명사 him이 Ashin으로 수정되었다 (in Turn 12)
 
 </div>
@@ -245,7 +245,7 @@ Neural Response Generator<br>
 
 <div align=center>
 interactive representation<br>
-<img src="../img/xiaoice_interactive_representation.png" width=300/>
+<img src="../img/xiaoice_interactive_representation.PNG" width=300/>
 </div>
 <br>
 
@@ -262,7 +262,7 @@ hidden state 계산 과정
 previous hidden state <img src="https://render.githubusercontent.com/render/math?math=h_{t-1}">와 단어 임베딩 <img src="https://render.githubusercontent.com/render/math?math=e_t">와 함께 interactive representation <img src="https://render.githubusercontent.com/render/math?math=v">을 결합함으로써 XiaoIce의 페르소나에 맞는 답변이 출력됨  
 
 <div align=center>
-<img src="../img/xiaoice_result_of_interactive_representation.png" width=800/><br>
+<img src="../img/xiaoice_result_of_interactive_representation.PNG" width=800/><br>
 왼쪽은 기본 S2S-Bot, 오른쪽은 interactive representation을 결합한 결화
 </div>
 
