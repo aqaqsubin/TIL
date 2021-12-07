@@ -95,7 +95,7 @@ Hierarchical Decision Making<br>
 --- 
 
 ## **3. System Architecture**
-![XiaoIce System Architecture](../img/xiaoice_system_arch.png)
+![XiaoIce System Architecture](../img/XiaoIce/xiaoice_system_arch.png)
 
 - **User Experience Layer** : 다양한 채팅 플랫폼과 연결 (+ 이미지 이해, 음성 인식, VAD 등 전처리 수행)
     - full-duplex 모드: 음성 기반 대화를 다루며, 사용자와 챗봇이 동시에 말할 수 있음
@@ -166,7 +166,7 @@ Topic ranker와 Topic database로 이루어져 있으며, Topic switch가 활성
 주어진 query, <img src="https://render.githubusercontent.com/render/math?math=Q">를 현재 context(<img src="https://render.githubusercontent.com/render/math?math=C">)를 고려하여 <img src="https://render.githubusercontent.com/render/math?math=Q_c">로 rewrite    
 
 <div align=center>
-<img src="../img/xiaoice_cqu_rewrite.PNG" width=850><br>
+<img src="../img/XiaoIce/xiaoice_cqu_rewrite.PNG" width=850><br>
 문맥에 맞도록 대명사 him이 Ashin으로 수정되었다 (in Turn 12)
 
 </div>

@@ -36,7 +36,7 @@ XiaoIce의 전체 프레임워크를 소개하는 논문이다.
 ## **2. Design Principle**
 
 ## **3. System Architecture**
-![XiaoIce System Architecture](../img/xiaoice_system_arch.png)
+![XiaoIce System Architecture](../img/XiaoIce/xiaoice_system_arch.png)
 
 
 - User Experience Layer : 다양한 채팅 플랫폼과 연결
@@ -88,7 +88,7 @@ Retrieval-Based Generator의 단점을 보완하기 위해 도입
 >질의: You like Ashin  
 >응답 후보: Why not?  
 
-![Neural Response Generator](../img/xiaoice_neural_response_gen.png)
+![Neural Response Generator](../img/XiaoIce/xiaoice_neural_response_gen.png)
 
 
 
@@ -99,7 +99,7 @@ Coverage를 향상시키기 위해 Non-Conversational 데이터를 사용하여 
 2. 지식 그래프에서 유저의 발화 주제와 관련된 후보 주제 20개 선택  
 3. 유저의 발화 주제와 후보 주제를 결합하여 대화 DB에서 응답 후보군 선택  
 
-![Retrieval-Based Generator](../img/xiaoice_retrieval_based_generator.png)
+![Retrieval-Based Generator](../img/XiaoIce/xiaoice_retrieval_based_generator.png)
 
 **3. Dialog Skills**  
 - 기능 대화, 이미지 등 특정 입력에 대해 처리하는 기타 대화 기술

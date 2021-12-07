@@ -70,7 +70,7 @@ XiaoIce는 높은 IQ를 달성하기 위해 230개의 _Dialog Skills_, 멀티턴
 본 논문에서는 사람과 머신 간의 소셜 대화을 Hierarchical Decision-Making Process로 캐스팅하였다.
 <div align=center>
 Hierarchical Decision Making<br>
-<img src="../img/hierarchical_decision_making.png" width=800/>
+<img src="../img/XiaoIce/hierarchical_decision_making.png" width=800/>
 </div>
 <br>
 
@@ -95,7 +95,7 @@ Hierarchical Decision Making<br>
 --- 
 
 ## **3. System Architecture**
-![XiaoIce System Architecture](../img/xiaoice_system_arch.png)
+![XiaoIce System Architecture](../img/XiaoIce/xiaoice_system_arch.png)
 
 - **User Experience Layer** : 다양한 채팅 플랫폼과 연결 (+ 이미지 이해, 음성 인식, VAD 등 전처리 수행)
     - full-duplex 모드: 음성 기반 대화를 다루며, 사용자와 챗봇이 동시에 말할 수 있음
@@ -166,7 +166,7 @@ Topic ranker와 Topic database로 이루어져 있으며, Topic switch가 활성
 주어진 query, <img src="https://render.githubusercontent.com/render/math?math=Q">를 현재 context(<img src="https://render.githubusercontent.com/render/math?math=C">)를 고려하여 <img src="https://render.githubusercontent.com/render/math?math=Q_c">로 rewrite    
 
 <div align=center>
-<img src="../img/xiaoice_cqu_rewrite.PNG" width=850><br>
+<img src="../img/XiaoIce/xiaoice_cqu_rewrite.PNG" width=850><br>
 문맥에 맞도록 대명사 him이 Ashin으로 수정되었다 (in Turn 12)
 
 </div>
@@ -180,7 +180,7 @@ Topic ranker와 Topic database로 이루어져 있으며, Topic switch가 활성
 사용자의 흥미, 감정, 의도, 의견, 사용자 페르소나 및 <img src="https://render.githubusercontent.com/render/math?math=C">를 <img src="https://render.githubusercontent.com/render/math?math=e_Q">로 인코딩하는 컴포넌트이다.  
 
 <div align=center>
-<img src="../img/xiaoice-e_Q_e_R.PNG" width=850><br>
+<img src="../img/XiaoIce/xiaoice-e_Q_e_R.PNG" width=850><br>
 사용자의 profile을 반영한 발화 정보 (in Turn 11)
 </div>
 
@@ -239,20 +239,20 @@ Retrieval-Based Generator의 단점을 보완하기 위해 도입
 
 <div align=center>
 Neural Response Generator<br>
-<img src="../img/xiaoice_neural_response_gen.png" width=850/>
+<img src="../img/XiaoIce/xiaoice_neural_response_gen.png" width=850/>
 </div>
 <br>
 
 <div align=center>
 interactive representation<br>
-<img src="../img/xiaoice_interactive_representation.PNG" width=300/>
+<img src="../img/XiaoIce/xiaoice_interactive_representation.PNG" width=300/>
 </div>
 <br>
 
 <img src="https://render.githubusercontent.com/render/math?math=v">를 context vector로 한 Attention mechanism을 적용하였다.
 
 <div align=center>
-<img src="../img/xiaoice_s2s_bot_generation_with_attn.jpg" width=850/><br>
+<img src="../img/XiaoIce/xiaoice_s2s_bot_generation_with_attn.jpg" width=850/><br>
 hidden state 계산 과정
 </div>
 
@@ -263,7 +263,7 @@ hidden state 계산 과정
 previous hidden state <img src="https://render.githubusercontent.com/render/math?math=h_{t-1}">와 단어 임베딩 <img src="https://render.githubusercontent.com/render/math?math=e_t">와 함께 interactive representation <img src="https://render.githubusercontent.com/render/math?math=v">을 결합함으로써 XiaoIce의 페르소나에 맞는 답변이 출력됨  
 
 <div align=center>
-<img src="../img/xiaoice_result_of_interactive_representation.PNG" width=800/><br>
+<img src="../img/XiaoIce/xiaoice_result_of_interactive_representation.PNG" width=800/><br>
 왼쪽은 기본 S2S-Bot, 오른쪽은 interactive representation을 결합한 결과
 </div>
 
@@ -288,7 +288,7 @@ head-relation-tail triple <img src="https://render.githubusercontent.com/render/
 
 <div align=center>
 Retrieval-Based Generator<br>
-<img src="../img/xiaoice_retrieval_based_generator.png" width=900/>
+<img src="../img/XiaoIce/xiaoice_retrieval_based_generator.png" width=900/>
 </div>
 
 Neural Response Generator보다 길고 유용한 정보가 포함될 수 있으며, Retrieval-Based Generator using Paired Data보다 다양한 topic이 포함된 응답이 출력될 수 었어, 세 모델이 상호보완적으로 사용된다.
