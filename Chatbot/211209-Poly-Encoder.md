@@ -230,7 +230,7 @@ $$y_{cand_i} = red(T_2(cand_i))$$
 (인코더의 모든 계층에서 attention 수행)  
 > Poly-encoder는 마지막 계층에서만 candidate과 input context 간의 attention을 수행하므로 더 빠르다
 
-[Poly-encoder, Bi-encoder, Cross-encoder 구현👊](https://github.com/aqaqsubin/Pairwise-Comparison-Model/blob/)  
+[Poly-encoder, Bi-encoder, Cross-encoder 구현👊](https://github.com/aqaqsubin/Pairwise-Comparison-Model/)  
 논문을 보며 구현해본 코드로 틀릴 수 있다.. 
 
 (Poly-encoder 코드는 facebookresearch repo에서 오픈소스로 공개되어있다.)
