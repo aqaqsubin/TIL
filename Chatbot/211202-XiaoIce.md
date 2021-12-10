@@ -70,7 +70,7 @@ XiaoIce는 높은 IQ를 달성하기 위해 230개의 _Dialog Skills_, 멀티턴
 본 논문에서는 사람과 머신 간의 소셜 대화을 Hierarchical Decision-Making Process로 캐스팅하였다.
 <div align=center>
 Hierarchical Decision Making<br>
-<img src="../img/hierarchical_decision_making.png" width=800/>
+<img src="../img/XiaoIce/hierarchical_decision_making.png" width=800/>
 </div>
 <br>
 
@@ -180,7 +180,7 @@ Topic ranker와 Topic database로 이루어져 있으며, Topic switch가 활성
 사용자의 흥미, 감정, 의도, 의견, 사용자 페르소나 및 <img src="https://render.githubusercontent.com/render/math?math=C">를 <img src="https://render.githubusercontent.com/render/math?math=e_Q">로 인코딩하는 컴포넌트이다.  
 
 <div align=center>
-<img src="../img/xiaoice-e_Q_e_R.PNG" width=850><br>
+<img src="../img/XiaoIce/xiaoice-e_Q_e_R.PNG" width=850><br>
 사용자의 profile을 반영한 발화 정보 (in Turn 11)
 </div>
 
@@ -241,20 +241,20 @@ Retrieval-Based Generator의 단점을 보완하기 위해 도입
 
 <div align=center>
 Neural Response Generator<br>
-<img src="../img/xiaoice_neural_response_gen.png" width=850/>
+<img src="../img/XiaoIce/xiaoice_neural_response_gen.png" width=850/>
 </div>
 <br>
 
 <div align=center>
 interactive representation<br>
-<img src="../img/xiaoice_interactive_representation.PNG" width=300/>
+<img src="../img/XiaoIce/xiaoice_interactive_representation.PNG" width=300/>
 </div>
 <br>
 
 <img src="https://render.githubusercontent.com/render/math?math=v">를 context vector로 한 Attention mechanism을 적용하였다.
 
 <div align=center>
-<img src="../img/xiaoice_s2s_bot_generation_with_attn.jpg" width=850/><br>
+<img src="../img/XiaoIce/xiaoice_s2s_bot_generation_with_attn.jpg" width=850/><br>
 hidden state 계산 과정
 </div>
 
@@ -265,7 +265,7 @@ hidden state 계산 과정
 previous hidden state <img src="https://render.githubusercontent.com/render/math?math=h_{t-1}">와 단어 임베딩 <img src="https://render.githubusercontent.com/render/math?math=e_t">와 함께 interactive representation <img src="https://render.githubusercontent.com/render/math?math=v">을 결합함으로써 XiaoIce의 페르소나에 맞는 답변이 출력됨  
 
 <div align=center>
-<img src="../img/xiaoice_result_of_interactive_representation.PNG" width=800/><br>
+<img src="../img/XiaoIce/xiaoice_result_of_interactive_representation.PNG" width=800/><br>
 왼쪽은 기본 S2S-Bot, 오른쪽은 interactive representation을 결합한 결과
 </div>
 
@@ -290,7 +290,7 @@ head-relation-tail triple <img src="https://render.githubusercontent.com/render/
 
 <div align=center>
 Retrieval-Based Generator<br>
-<img src="../img/xiaoice_retrieval_based_generator.png" width=900/>
+<img src="../img/XiaoIce/xiaoice_retrieval_based_generator.png" width=900/>
 </div>
 
 Neural Response Generator보다 길고 유용한 정보가 포함될 수 있으며, Retrieval-Based Generator using Paired Data보다 다양한 topic이 포함된 응답이 출력될 수 었어, 세 모델이 상호보완적으로 사용된다.
@@ -319,13 +319,13 @@ Boosted Tree Ranker (Wu et al. 2010) 모델을 사용하며, ranking score가 th
 
 1. 페르소나에 기반한 Neural response generator의 검증  
 베이스라인 모델: vanilla seq2seq model, LSTM-MMI model(응답 생성 모델, SOTA)  
-성능 지표는 언어 모델의 성능지표로 사용되는 perplexity(next token에 대한 불확실성, PPL)와 BLEU score(생성된 응답이 사람의 것과 얼마나 유사한지 나타내는 지표)를 사용하였다.<div align=left><img src="../img/xiaoice_first_pilot.png" width=750/></div> 또한, persona model은 베이스라인 모델보다 interpersonal response를 생성한다.  <div align=left><img src="../img/xiaoice_first_pilot_example.png" width=700/></div>
+성능 지표는 언어 모델의 성능지표로 사용되는 perplexity(next token에 대한 불확실성, PPL)와 BLEU score(생성된 응답이 사람의 것과 얼마나 유사한지 나타내는 지표)를 사용하였다.<div align=left><img src="../img/XiaoIce/xiaoice_first_pilot.png" width=750/></div> 또한, persona model은 베이스라인 모델보다 interpersonal response를 생성한다.  <div align=left><img src="../img/XiaoIce/xiaoice_first_pilot_example.png" width=700/></div>
 
 2. 생성 모델과 검색 모델을 혼용한 하이브리드 시스템의 효율성 검증  
 Hybrid system :위 3가지의 Candidate generator 중 ⑴과 ⑵ 모델을 혼용한 모델  
 베이스 라인: ⑴과 ⑵  
 <br>
-4,000개의 dialogue session 데이터를 검증에 사용하였으며, 각 모델에 의해 생성된 응답은 사람에 의해 0, 1, 2로 레이블링하여 검증을 진행하였다.<div align=left><img src="../img/xiaoice_second_pilot.png" width=750/></div> 위에서처럼,  Retrieval-based Candidate generator를 단독으로 사용하는 것보다 Neural response generator를 결합한 시스템이 더 성능이 좋다.   
+4,000개의 dialogue session 데이터를 검증에 사용하였으며, 각 모델에 의해 생성된 응답은 사람에 의해 0, 1, 2로 레이블링하여 검증을 진행하였다.<div align=left><img src="../img/XiaoIce/xiaoice_second_pilot.png" width=750/></div> 위에서처럼,  Retrieval-based Candidate generator를 단독으로 사용하는 것보다 Neural response generator를 결합한 시스템이 더 성능이 좋다.   
 세 가지 candidate generator 모델을 혼용한 Hybrid 시스템은 2주 안에 Core Chat의 expected CPS를 0.5 향상시켰으며, 응답 커버리지도 향상시켰다.
 
 
@@ -335,7 +335,7 @@ Hybrid system :위 3가지의 Candidate generator 중 ⑴과 ⑵ 모델을 혼�
 
 <div align=center>
 traditional vision task와 다른 점<br>
-<img src="../img/xiaoice_image_commenting.png" width=900/>
+<img src="../img/XiaoIce/xiaoice_image_commenting.png" width=900/>
 </div>
 Image Commenting 기술은 사물 인식 및 사진을 묘사하면서도 공감적 코멘트를 생성한다.  
 
@@ -347,7 +347,7 @@ image-comment pair DB 및 쿼리로 주어진 이미지를 각각 visual feature
 
 <div align=center>
 Image to visual feature vector<br>
-<img src="../img/xiaoice_image_encoding.png" width=900/>
+<img src="../img/XiaoIce/xiaoice_image_encoding.png" width=900/>
 </div>
 
 
@@ -368,12 +368,12 @@ Core Chat과 비슷하다. boosted tree ranker를 사용하여 위에서 언급�
 모든 지표에서 XiaoIce가 뛰어남 
 <div align=center>
 Image Captioning system과 비교<br>
-<img src="../img/xiaoice_result_of_image_commenting.png" width=800/>
+<img src="../img/XiaoIce/xiaoice_result_of_image_commenting.png" width=800/>
 </div>
 
 <div align=center>
 Image Commenting 예시<br>
-<img src="../img/xiaoice_result_of_image_commenting_example.png" width=600/>
+<img src="../img/XiaoIce/xiaoice_result_of_image_commenting_example.png" width=600/>
 </div>
 --> Image Commenting 기술은 expected CPS를 2배 증가시켰다.  
 
@@ -409,7 +409,7 @@ dialogue skill들을 아래 3가지의 카테고리로 나누어 소개
 ## **5. XiaoIce in the Wild**
 
 <div align=center>
-<img src="../img/xiaoice_milestone.png" width=750/>
+<img src="../img/XiaoIce/xiaoice_milestone.png" width=750/>
 </div>
 
 - Neural Response Generator는 5번째 버전에 추가되었으며, 이는 응답의 커버리지 및 다양성을 향상시켰다.
@@ -421,7 +421,7 @@ dialogue skill들을 아래 3가지의 카테고리로 나누어 소개
 XiaoIce는 사람과 장기적인 교류를 목표로 삼았는데, 아래는 이를 달성했다는 결과를 보여준다.
 
 <div align=center>
-<img src="../img/xiaoice_longest_conversation.png" width=650/>
+<img src="../img/XiaoIce/xiaoice_longest_conversation.png" width=650/>
 </div>
 
 <br>
