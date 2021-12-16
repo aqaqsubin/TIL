@@ -103,7 +103,7 @@ $$
 <div align=center>
 <img src="../img/DeBERTa/shaw_attn_score.jpeg" width=500/></div>
 
-본 논문에서는 relative position 정보를 저장하기 위해 $\delta$ 함수를 사용했는데,  
+본 논문에서는 relative position 정보를 매핑하기 위해 $\delta$ 함수를 사용했는데,  
 $N$개의 시퀀스에 대해 모든 상대적 위치 정보를 저장하지 않고 상한선을 두어 $k$ 거리까지만 저장한다 
 
 <div align=center>
@@ -137,6 +137,7 @@ Attention score 연산이 끝나면 scaling 수행
 #### **3.2 Enhanced mask decoder accounts for absolute word positions**
 
 위의 Disentangled Attention mechanism은 absolute position을 고려하지 않는다.  
+
 하지만 절대 위치 정보는 문법적 측면에서 필요한 요소이기 때문에, EMD (Enhanced Mask Decoder)에서 Absolute position embedding을 취합한다. 
 
 
