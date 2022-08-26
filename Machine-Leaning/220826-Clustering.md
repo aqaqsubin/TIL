@@ -10,7 +10,7 @@
 
 ## **Partitioning Method**
 
-$n$개의 data point들이 있을 때, 사용자에 의해 정의된 $k$개의 그룹으로 군집화하는 방법
+<img src="http://latex.codecogs.com/svg.latex?n"/>개의 data point들이 있을 때, 사용자에 의해 정의된 <img src="http://latex.codecogs.com/svg.latex?k"/>개의 그룹으로 군집화하는 방법
 
 - K-means와 K-medoid가 있다.
 
@@ -26,7 +26,7 @@ cluster의 centroid와의 유클리디안 거리를 최소화하는 작업을 �
 
 ![Untitled](../img/Machine-Learning/kmeans.png)
 
-1. $k$개의 임의의 중심점(centroid) 배치 (초기 값에 따른 실패 가능성 有)
+1. <img src="http://latex.codecogs.com/svg.latex?k"/>개의 임의의 중심점(centroid) 배치 (초기 값에 따른 실패 가능성 有)
 2. 각 데이터들을 가장 가까운 중심점으로 할당
 3. 각 cluster의 centroid를 cluster 내 data point의 평균 값으로 업데이트
 4. 더 이상 centroid가 갱신되지 않을 때까지 2-3 반복
@@ -80,19 +80,19 @@ Density-based method는 **data point 밀도** 에 따라 군집화
 > 
 > - 데이터 분포가 다양한 밀도를 가진 경우, 실패 가능성이 커짐
 > - Eps, minPts의 파라미터를 지정해야 함
-> - Eps 반경 이내인지 비교 연신시간이 $n\log n$
+> - Eps 반경 이내인지 비교 연신시간이 <img src="http://latex.codecogs.com/svg.latex?n\log n"/>
 
 ---
 
 ## **Model-based method**
 
-$k$번째 cluster에 속한 관측치 $x$가 다변량 정규분포인 확률 밀도 함수 $f$를 가진다고 가정한다.
+<img src="http://latex.codecogs.com/svg.latex?k"/>번째 cluster에 속한 관측치 <img src="http://latex.codecogs.com/svg.latex?x"/>가 다변량 정규분포인 확률 밀도 함수 <img src="http://latex.codecogs.com/svg.latex?f"/>를 가진다고 가정한다.
 
 ⇒ 관찰된 data point는 각 cluster에 속할 확률 분포를 혼합한 혼합 분포를 가진다
 
 **다변량 분포(Multi-variable Distribution)** : 확률 변수가 하나 이상인 분포
 
-data point $x$가 주어지면, 각 cluster에 속할 사후 확률 (또는 Likelihood)을 계산하여 
+data point <img src="http://latex.codecogs.com/svg.latex?x"/>가 주어지면, 각 cluster에 속할 사후 확률 (또는 Likelihood)을 계산하여 
 가장 높은 확률(또는 Likelihood)의 cluster로 할당한다. (**MAP와 MLE**)
 
 ~ EM과 GMM이 있다.
@@ -100,21 +100,23 @@ data point $x$가 주어지면, 각 cluster에 속할 사후 확률 (또는 Like
 
 > 📢 **MLE와 MAP**
 >
->동전의 앞면 $H$가 나올 확률이 $\theta$일 때, 앞면이 나올 확률은 어떻게 구할까
+>동전의 앞면 <img src="http://latex.codecogs.com/svg.latex?H"/>가 나올 확률이 <img src="http://latex.codecogs.com/svg.latex?\theta"/>일 때, 앞면이 나올 확률은 어떻게 구할까
 >
 > **1) Maximum Likelihood Estimation(MLE)**
 >
 > → **Likelihood를 최대로 하는 최적의 확률**
 > 
-> : 확률 질량 함수(또는 확률 밀도 함수)에서 **관측된 표본**에서 $\theta$를 추청하는 방법
+> : 확률 질량 함수(또는 확률 밀도 함수)에서 **관측된 표본**에서 <img src="http://latex.codecogs.com/svg.latex?\theta"/>를 추청하는 방법
 > 
-> $`P(D|\theta) = \theta^{a_H}(1-\theta)^{a_T}`$ *→ $a_H$ 과 $a_T$는 각각 앞면과 뒷면이 나온 횟수*
+> <img src="http://latex.codecogs.com/svg.latex?P(D|\theta) = \theta^{a_H}(1-\theta)^{a_T}"/> → <img src="http://latex.codecogs.com/svg.latex?a_H"/> 과 <img src="http://latex.codecogs.com/svg.latex?a_T"/>는 각각 앞면과 뒷면이 나온 횟수
 > 
-> $`\hat{\theta} = argmax_{\theta}P(D|\theta)`$
+> $$
+> \hat{\theta} = argmax_{\theta}P(D|\theta)
+> $$
 > 
-> ~ $P(D|\theta)$는 $\theta$가 주어졌을 때의 $D$의 분포로, $\theta$의 분포
+> ~ <img src="http://latex.codecogs.com/svg.latex?P(D|\theta)"/>는 <img src="http://latex.codecogs.com/svg.latex?\theta"/>가 주어졌을 때의 <img src="http://latex.codecogs.com/svg.latex?D"/>의 분포로, <img src="http://latex.codecogs.com/svg.latex?\theta"/>의 분포
 > 
-> ~ 최적의 $\theta$ 값인 $\hat{\theta}$는 그래프 **미분**을 통해 함수의 최댓값을 찾아 구함
+> ~ 최적의 <img src="http://latex.codecogs.com/svg.latex?\theta"/> 값인 <img src="http://latex.codecogs.com/svg.latex?\hat{\theta}"/>는 그래프 **미분**을 통해 함수의 최댓값을 찾아 구함
 > 
 > <br>
 >
@@ -124,11 +126,15 @@ data point $x$가 주어지면, 각 cluster에 속할 사후 확률 (또는 Like
 >
 >: **베이즈 정리** 를 활용하여 Posterior를 계산
 >
->$`P(\theta|D) = \frac{P(D|\theta)P(\theta)}{P(D)}`$
+>$$
+>P(\theta|D) = \frac{P(D|\theta)P(\theta)}{P(D)}
+>$$
 >
->$`\hat{\theta} = argmax_{\theta}P(\theta|D)`$
+>$$
+>\hat{\theta} = argmax_{\theta}P(\theta|D)
+>$$
 >
->~ $P(\theta|D)$는 데이터 $D$가 주어졌을 때의 $\theta$의 분포로, 데이터 분포를 나타낸다
+> <img src="http://latex.codecogs.com/svg.latex?P(\theta|D)"/> 는 데이터 <img src="http://latex.codecogs.com/svg.latex?D"/>가 주어졌을 때의 <img src="http://latex.codecogs.com/svg.latex?\theta"/>의 분포로, 데이터 분포를 나타낸다
 >
 ><br>
 >
