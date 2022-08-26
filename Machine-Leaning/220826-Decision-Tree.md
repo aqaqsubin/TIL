@@ -43,14 +43,16 @@
 
 $Entropy(A) = - \Sigma_{k=1}^m p_k \log_2 (p_k)$
 
-$p_k$ : A 영역 안에 속하는 레코드 가운데 $k$ 범주에 속하는 레코드의 비율
+<img src="http://latex.codecogs.com/svg.latex?p_k"/> : A 영역 안에 속하는 레코드 가운데 <img src="http://latex.codecogs.com/svg.latex?k"/> 범주에 속하는 레코드의 비율
 
 전체 영역을 분할하였을 때 Entropy는 다음과 같다.  
-    $Entropy(C) = \Sigma_{i=1}^d R_i (-\Sigma_{k=1}^m p_k \log_2(p_k))$
 
+$$
+Entropy(C) = \Sigma_{i=1}^d R_i (-\Sigma_{k=1}^m p_k \log_2(p_k))
+$$
 
-$R_i$: $i$ 영역에 속하는 레코드 비율  
-~ 분할 후 $i$ 영역에 속하는 레코드 개수 / 전체 레코드 개수
+<img src="http://latex.codecogs.com/svg.latex?R_i"/>: <img src="http://latex.codecogs.com/svg.latex?i"/> 영역에 속하는 레코드 비율  
+~ 분할 후 <img src="http://latex.codecogs.com/svg.latex?i"/> 영역에 속하는 레코드 개수 / 전체 레코드 개수
 
 <br>
 
@@ -60,13 +62,21 @@ $R_i$: $i$ 영역에 속하는 레코드 비율
 
 전체 레코드는 16개이다.
 
-$Entropy(C) = \frac{10}{16}\log_2 (\frac{10}{16}) - \frac{6}{16}\log_2(\frac{6}{16})  \approx 0.95$
+$$
+Entropy(C) = \frac{10}{16}\log_2 (\frac{10}{16}) - \frac{6}{16}\log_2(\frac{6}{16})  \approx 0.95
+$$
 
-$Entropy(C) = 0.5 \times Entropy(A) + 0.5 \times Entropy(B)$
+$$
+Entropy(C) = 0.5 \times Entropy(A) + 0.5 \times Entropy(B)
+$$
 
-$= 0.5 \times (-\frac{7}{8}\log_2(\frac{7}{8})-\frac{1}{8}\log_2(\frac{1}{8})) + 0.5 \times (-\frac{3}{8}\log_2(\frac{3}{8})-\frac{5}{8}\log_2(\frac{5}{8}))$
+$$
+= 0.5 \times (-\frac{7}{8}\log_2(\frac{7}{8})-\frac{1}{8}\log_2(\frac{1}{8})) + 0.5 \times (-\frac{3}{8}\log_2(\frac{3}{8})-\frac{5}{8}\log_2(\frac{5}{8}))
+$$
 
-$\approx 0.75$
+$$
+\approx 0.75
+$$
 
 분할 후 Entropy가 감소했기 때문에 모델은 데이터를 A와 B 영역으로 분할한다.
 
@@ -83,9 +93,11 @@ Entropy와 같이 불순도를 측정하는 지표로, 데이터의 **통계적 
 
 ![GINI](../img/Machine-Learning/gini.png)
 
-$GINI(C) = 1 - \Sigma_{i=1}^d p^2_i$
+$$
+GINI(C) = 1 - \Sigma_{i=1}^d p^2_i
+$$
 
-$p_i:$ C 영역에 속한 전체 레코드 중 i 영역에 속한 레코드 비율
+<img src="http://latex.codecogs.com/svg.latex?p_i"/>: C 영역에 속한 전체 레코드 중 <img src="http://latex.codecogs.com/svg.latex?i"/> 영역에 속한 레코드 비율
 
 <br>
 
@@ -94,21 +106,33 @@ $p_i:$ C 영역에 속한 전체 레코드 중 i 영역에 속한 레코드 비�
 전체 영역 S를 A 기준으로 분할했을 때
 ![Example_2](../img/Machine-Learning/gini_example.png)
 
-$GINI(A_1) = 1 - (\frac{8}{16})^2- (\frac{8}{16})^2 = 0.5$
+$$
+GINI(A_1) = 1 - (\frac{8}{16})^2- (\frac{8}{16})^2 = 0.5
+$$
 
-$GINI(A_2) = 1 - (\frac{4}{7})^2- (\frac{3}{7})^2 = 0.49$
+$$
+GINI(A_2) = 1 - (\frac{4}{7})^2- (\frac{3}{7})^2 = 0.49
+$$
 
-$GINI(S)_A = (\frac{16}{23}) \times 0.5 + (\frac{7}{23}) \times 0.49 = 0.497$
+$$
+GINI(S)_A = (\frac{16}{23}) \times 0.5 + (\frac{7}{23}) \times 0.49 = 0.497
+$$
 
 전체 영역 S를 B 기준으로 분할했을 때
 
 ![Example_2](../img/Machine-Learning/gini_example_2.png)
 
-$GINI(B_1) = 1 - (\frac{11}{14})^2- (\frac{3}{14})^2 = 0.34$
+$$
+GINI(B_1) = 1 - (\frac{11}{14})^2- (\frac{3}{14})^2 = 0.34
+$$
 
-$GINI(B_2) = 1 - (\frac{1}{9})^2- (\frac{8}{9})^2 = 0.2$
+$$
+GINI(B_2) = 1 - (\frac{1}{9})^2- (\frac{8}{9})^2 = 0.2
+$$
 
-$GINI(S)_B = (\frac{14}{23}) \times 0.34 + (\frac{9}{23}) \times 0.2 = 0.28$
+$$
+GINI(S)_B = (\frac{14}{23}) \times 0.34 + (\frac{9}{23}) \times 0.2 = 0.28
+$$
 
 따라서  불순도가 더 낮은 B로 분할하는 것이 좋다.
 
@@ -121,8 +145,8 @@ GINI Index는 CART 알고리즘을 사용한다.
 >- **가장 널리 사용되는 Decision Tree Algorithm.**
 >- 이진 분리를 사용한다.
 >- 분류와 회귀 모두 사용할 수 있다.
->- 목표 변수 $y$가 범주형인 경우, GINI Index 사용
->- 목표 변수 $y$가 연속형이라 여러 기준으로 나누는 다분법일 때는 다음과 같다.
+>- 목표 변수 <img src="http://latex.codecogs.com/svg.latex?y"/>가 범주형인 경우, GINI Index 사용
+>- 목표 변수 <img src="http://latex.codecogs.com/svg.latex?y"/>가 연속형이라 여러 기준으로 나누는 다분법일 때는 다음과 같다.
 >
 >   ![CART](../img/Machine-Learning/cart.png)
 >
@@ -143,7 +167,9 @@ Information gain이란, 분할 전 Entropy와 분할 후 Entropy의 차이를 �
 
 ⇒ 상위 노드의 엔트로피에서 하위 노드의 엔트로피를 뺀 값이다.
 
-$IG(S)= Entropy(S) - \Sigma_{i=1}^d \frac{n_i}{n} Entropy(i)$
+$$
+IG(S)= Entropy(S) - \Sigma_{i=1}^d \frac{n_i}{n} Entropy(i)
+$$
 
 <br>
 
@@ -153,29 +179,46 @@ $IG(S)= Entropy(S) - \Sigma_{i=1}^d \frac{n_i}{n} Entropy(i)$
 
 1) **분할 전 Entropy 계산**
 
-    $Entropy(참가여부) = - \frac{9}{14}\log_2 (\frac{9}{14})- \frac{5}{14}\log_2 (\frac{5}{14}) = 0.940$
-
+    $$
+    Entropy(참가여부) = - \frac{9}{14}\log_2 (\frac{9}{14})- \frac{5}{14}\log_2 (\frac{5}{14}) = 0.940
+    $$
 2) **각 속성에 대한 Information gain 계산**
 
-    $Entropy(참가여부 | 날씨) = \frac{5}{14} (-\frac{2}{5}\log_2(\frac{2}{5})-\frac{3}{5}\log_2(\frac{3}{5})) + \frac{4}{14} (-\frac{4}{4}\log_2(\frac{4}{4}))+ \frac{5}{14} (-\frac{3}{5}\log_2(\frac{3}{5})-\frac{2}{5}\log_2(\frac{2}{5}))=0.694$
+    $$
+    Entropy(참가여부 | 날씨) = \frac{5}{14} (-\frac{2}{5}\log_2(\frac{2}{5})-\frac{3}{5}\log_2(\frac{3}{5})) + \frac{4}{14} (-\frac{4}{4}\log_2(\frac{4}{4}))+ \frac{5}{14} (-\frac{3}{5}\log_2(\frac{3}{5})-\frac{2}{5}\log_2(\frac{2}{5}))=0.694
+    $$
 
-    $Entropy(참가여부 | 온도) = \frac{2}{14} (-\frac{2}{4}\log_2(\frac{2}{4})-\frac{2}{4}\log_2(\frac{2}{4})) + \frac{6}{14} (-\frac{4}{6}\log_2(\frac{4}{6})-\frac{2}{6}\log_2(\frac{2}{6}))+ \frac{4}{14} (-\frac{3}{4}\log_2(\frac{3}{4})-\frac{1}{4}\log_2(\frac{1}{4}))=0911$
+    $$
+    Entropy(참가여부 | 온도) = \frac{2}{14} (-\frac{2}{4}\log_2(\frac{2}{4})-\frac{2}{4}\log_2(\frac{2}{4})) + \frac{6}{14} (-\frac{4}{6}\log_2(\frac{4}{6})-\frac{2}{6}\log_2(\frac{2}{6}))+ \frac{4}{14} (-\frac{3}{4}\log_2(\frac{3}{4})-\frac{1}{4}\log_2(\frac{1}{4}))=0911
+    $$
 
-    $Entropy(참가여부 | 습도) = \frac{7}{14} (-\frac{3}{7}\log_2(\frac{3}{7})-\frac{4}{7}\log_2(\frac{4}{7})) +\frac{7}{14} (-\frac{6}{7}\log_2(\frac{6}{7})-\frac{1}{7}\log_2(\frac{1}{7}))=0.789$
-
-    $Entropy(참가여부 | 바람) = \frac{6}{14} (-\frac{3}{6}\log_2(\frac{3}{6})-\frac{3}{6}\log_2(\frac{3}{6})) +\frac{8}{14} (-\frac{6}{8}\log_2(\frac{6}{8})-\frac{2}{8}\log_2(\frac{2}{8}))=0.892$
+    $$
+    Entropy(참가여부 | 습도) = \frac{7}{14} (-\frac{3}{7}\log_2(\frac{3}{7})-\frac{4}{7}\log_2(\frac{4}{7})) +\frac{7}{14} (-\frac{6}{7}\log_2(\frac{6}{7})-\frac{1}{7}\log_2(\frac{1}{7}))=0.789
+    $$
+    
+    $$
+    Entropy(참가여부 | 바람) = \frac{6}{14} (-\frac{3}{6}\log_2(\frac{3}{6})-\frac{3}{6}\log_2(\frac{3}{6})) +\frac{8}{14} (-\frac{6}{8}\log_2(\frac{6}{8})-\frac{2}{8}\log_2(\frac{2}{8}))=0.892
+    $$
 
 
 3) **Information gain이 최대가 되는 분기 조건 찾기**
 
-    $IG(참가여부, 날씨) = E(참가여부) - E(참가여부|날씨) = 0.94 - 0.694 = 0.246$
-
-    $IG(참가여부, 온도) = E(참가여부) - E(참가여부|온도) = 0.94 - 0.911 = 0.029$
-
-    $IG(참가여부, 습도) = E(참가여부) - E(참가여부|습도) = 0.94 - 0.789 = 0.151$
-
-    $IG(참가여부, 바람)= E(참가여부) - E(참가여부|바람) = 0.94 - 0.892 = 0.048$
-
+    $$
+    IG(참가여부, 날씨) = E(참가여부) - E(참가여부|날씨) = 0.94 - 0.694 = 0.246
+    $$
+    
+    $$
+    IG(참가여부, 온도) = E(참가여부) - E(참가여부|온도) = 0.94 - 0.911 = 0.029
+    $$
+    
+    $$
+    IG(참가여부, 습도) = E(참가여부) - E(참가여부|습도) = 0.94 - 0.789 = 0.151
+    $$
+    
+    $$
+    IG(참가여부, 바람)= E(참가여부) - E(참가여부|바람) = 0.94 - 0.892 = 0.048
+    $$
+    
  ⇒ 가장 큰 ‘날씨’를 기준으로 분류
 
 ![날씨가 ‘맑음’인 레코드](../img/Machine-Learning/weather_good.png)
@@ -201,17 +244,27 @@ Information gain은 ID3 알고리즘을 사용한다.
 
 ![Untitled](../img/Machine-Learning/windy.png)
 
-$Entropy(S) = -\frac{7}{10}\log_2 (\frac{7}{10})- \frac{3}{10}\log_2 (\frac{3}{10}) = 0.8813$
+$$
+Entropy(S) = -\frac{7}{10}\log_2 (\frac{7}{10})- \frac{3}{10}\log_2 (\frac{3}{10}) = 0.8813
+$$
 
-$Entropy(S | windy) = \frac{6}{10} (-\frac{6}{6}\log_2(\frac{6}{6})-0) + \frac{4}{10} (-\frac{1}{4}\log_2(\frac{1}{4})-\frac{3}{4}\log_2(\frac{3}{4}))$ 
+$$
+Entropy(S | windy) = \frac{6}{10} (-\frac{6}{6}\log_2(\frac{6}{6})-0) + \frac{4}{10} (-\frac{1}{4}\log_2(\frac{1}{4})-\frac{3}{4}\log_2(\frac{3}{4}))
+$$
 
-$Entropy(S, windy) = 0.8813 - (\frac{6}{10} \times 0+\frac{4}{10} \times 0.8113) =0.5568$
+$$
+Entropy(S, windy) = 0.8813 - (\frac{6}{10} \times 0+\frac{4}{10} \times 0.8113) =0.5568
+$$
 
 ![Untitled](../img/Machine-Learning/with_whom.png)
 
-$Entropy(S | with whom) = \frac{1}{10} (-\frac{1}{1}\log_2(\frac{1}{1})-0) + \cdots + \frac{2}{10} (-\frac{1}{2}\log_2(\frac{1}{2})-\frac{1}{2}\log_2(\frac{1}{2}))=0.2$
+$$
+Entropy(S | with whom) = \frac{1}{10} (-\frac{1}{1}\log_2(\frac{1}{1})-0) + \cdots + \frac{2}{10} (-\frac{1}{2}\log_2(\frac{1}{2})-\frac{1}{2}\log_2(\frac{1}{2}))=0.2
+$$
 
-$Entropy(S, with whom) = 0.8813 - (\frac{1}{10} \times 0+ \cdots + \frac{2}{10} \times 1) =0.6813$
+$$
+Entropy(S, with whom) = 0.8813 - (\frac{1}{10} \times 0+ \cdots + \frac{2}{10} \times 1) =0.6813
+$$
 
 Windy보다 With whom을 기준으로 분기하는 것이 더 IG가 높다.
 
@@ -229,12 +282,16 @@ Information gain을 Intrinsic value로 나눈 값으로, IV에 개수를 넣어 
 
 - **값이 작을수록** 순도가 높다는 것을 의미한다.
 
-특정 지표로 분기했을 때 생성되는 가지의 수를 $N$이라 하고 
-$i$번째 가지에 해당하는 확률을 $\frac{n_i}{n}$
+특정 지표로 분기했을 때 생성되는 가지의 수를 <img src="http://latex.codecogs.com/svg.latex?N"/>이라 하고 
+<img src="http://latex.codecogs.com/svg.latex?i"/>번째 가지에 해당하는 확률을 <img src="http://latex.codecogs.com/svg.latex?\frac{n_i}{n}"/>
 
-$IV(A) = -\Sigma_{i=1}^N\frac{n_i}{n}\log_2(\frac{n_i}{n})$
+$$
+IV(A) = -\Sigma_{i=1}^N\frac{n_i}{n}\log_2(\frac{n_i}{n})
+$$
 
-$IGR(A) = \frac{IG(A)}{IV(A)}$
+$$
+IGR(A) = \frac{IG(A)}{IV(A)}
+$$
 
 Information gain과 같이 데이터가 너무 잘게 분해되는 것을 방지하기 위해 Intrinsic value로 나누어 사용
 
@@ -244,15 +301,21 @@ Information gain과 같이 데이터가 너무 잘게 분해되는 것을 방지
 
 Windy 지표를 사용했을 때, 
 
-$IGR = IG/IV$
+$$IGR = IG/IV$$
 
- $= \frac{0.5568}{-(\frac{6}{10}\log_2(\frac{6}{10})+\frac{4}{10}\log_2(\frac{4}{10}))}$
+$$
+= \frac{0.5568}{-(\frac{6}{10}\log_2(\frac{6}{10})+\frac{4}{10}\log_2(\frac{4}{10}))}
+$$
 
-$= \frac{0.5568}{0.9701} = 0.5739$
+$$
+= \frac{0.5568}{0.9701} = 0.5739
+$$
 
 With whom 지표 사용했을 때,
 
-$IGR = \frac{0.6813}{3.1219} = 0.2182$
+$$
+IGR = \frac{0.6813}{3.1219} = 0.2182
+$$
 
 IGR를 사용하면 With whom 지표보다 windy 지표를 선택하게 된다.
 
